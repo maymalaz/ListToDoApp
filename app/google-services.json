@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "952900772002",
+    "project_id": "listtodoapp-4aa5b",
+    "storage_bucket": "listtodoapp-4aa5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952900772002:android:d7b96c42cd533cc9d1b7fb",
+        "android_client_info": {
+          "package_name": "com.example.listtodoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952900772002-3qfu7eae3mfdjn3qpr1iah7lco4ai2jj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuzvUAZ0O2ZH0ct3Cc3eA9v7prjsxKFrY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "952900772002-3qfu7eae3mfdjn3qpr1iah7lco4ai2jj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
