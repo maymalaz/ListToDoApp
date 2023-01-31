@@ -115,18 +115,22 @@ class HomeFragment : Fragment() {
         databaseReference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (postSnapshot in snapshot.children) {
-                    val value =
-                        snapshot.child(postSnapshot.key!!).child(uid)
-                            .getValue(Task::class.java)
-                    val currentDateTimeString: String = DateFormat.getDateInstance().format(Date())
+                    try {
 
-                    if(value!!.date.toString()==currentDateTimeString)
-                    {
-                        showNotification(value.title, value.description,requireContext())
 
-                    }
-                    taskList.add(value!!)
-                    homeAdapter.submitList(taskList.distinct())
+                        val value =
+                            snapshot.child(postSnapshot.key!!).child(uid)
+                                .getValue(Task::class.java)
+                        val currentDateTimeString: String =
+                            DateFormat.getDateInstance().format(Date())
+
+                        if (value!!.date.toString() == currentDateTimeString) {
+                            showNotification(value.title, value.description, requireContext())
+
+                        }
+                        taskList.add(value!!)
+                        homeAdapter.submitList(taskList.distinct())
+                    }catch (e:Exception){}
 
                 }
 
@@ -171,20 +175,22 @@ class HomeFragment : Fragment() {
                     databaseReference!!.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             for (postSnapshot in snapshot.children) {
-                                val value =
-                                    snapshot.child(postSnapshot.key!!).child(uid)
-                                        .getValue(Task::class.java)
-                                if (taskList[position].title == value!!.title) {
 
-                                    val applesQuery: Query = databaseReference!!
-                                        .child(postSnapshot.key!!).child(uid)
-                                    applesQuery.ref.removeValue()
+                                try {
+                                    val value =
+                                        snapshot.child(postSnapshot.key!!).child(uid)
+                                            .getValue(Task::class.java)
+                                    if (taskList[position].title == value!!.title) {
 
-                                    taskList.removeAt(position)
-                                    homeAdapter.notifyItemRemoved(position)
-                                }
+                                        val applesQuery: Query = databaseReference!!
+                                            .child(postSnapshot.key!!).child(uid)
+                                        applesQuery.ref.removeValue()
 
+                                        taskList.removeAt(position)
+                                        homeAdapter.notifyItemRemoved(position)
+                                    }
 
+                                }catch (e:Exception){}
                             }
 
 
